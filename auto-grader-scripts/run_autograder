@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+SOURCE=/autograder/source
+SUBMISSION=/autograder/submission
+RESULTS=/autograder/results
+
+set -e
+
+source "$HOME/.cargo/env"
+
+# Set submission as working directory
+cd "$SUBMISSION" || exit
+
+# Copy our tests
+rm -rf tests
+cp -r "$SOURCE/tests" tests
+
+# Get a clean build in case they uploaded target/
+cargo clean
+cargo build
+
+# Run tests
+cp "$SOURCE/run_tests.py" run_tests.py
+python3 run_tests.py "$RESULTS/results.json"

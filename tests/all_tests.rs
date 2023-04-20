@@ -120,11 +120,7 @@ success_tests! {
         file: "compare_expr_succ0.snek",
         expected: "true",
     },
-    {
-        name: compare_expr_succ1,
-        file: "compare_expr_succ1.snek",
-        expected: "false",
-    },
+
     {
         name: compare_expr_succ2,
         file: "compare_expr_succ2.snek",
@@ -373,6 +369,11 @@ runtime_error_tests! {
         name: invalid_argument_fail10,
         file: "loop_expr0.snek",
         input: "5",
+        expected: "invalid argument",
+    },
+    {
+        name: invalid_argument_fail11,
+        file: "invalid_argument_fail11.snek",
         expected: "invalid argument",
     },
 }

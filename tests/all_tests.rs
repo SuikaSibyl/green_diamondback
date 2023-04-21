@@ -224,6 +224,7 @@ success_tests! {
     {
         name: if_expr_succ1,
         file: "if_expr_input.snek",
+        input: "635",
         expected: "20",
     },
     {
@@ -235,12 +236,6 @@ success_tests! {
         name: if_expr_succ3,
         file: "if_expr_succ3.snek",
         expected: "7",
-    },
-    {
-        name: if_expr_succ4,
-        file: "if_expr_input.snek",
-        input: "635",
-        expected: "20",
     },
 
     // Set expr

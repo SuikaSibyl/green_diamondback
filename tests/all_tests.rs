@@ -327,7 +327,59 @@ success_tests! {
         file: "diamondback_fun_no_args.snek",
         expected: "true\nfalse\n0\n-1\n1",
     },
+    {
+        name: diamondback_calling_chain0,
+        file: "diamondback_calling_chain0.snek",
+        expected: "100\n100",
+    },
+    {
+        name: diamondback_calling_chain1,
+        file: "diamondback_calling_chain1.snek",
+        expected: "100\n100",
+    },
+    {
+        name: diamondback_conveyer_belt,
+        file: "diamondback_conveyer_belt.snek",
+        expected: "-50"
+    },
+    {
+        name: diamondback_decreasing_args,
+        file: "diamondback_decreasing_args.snek",
+        expected: "12"
+    },
+    {
+        name: diamondback_many_unused_functions,
+        file: "diamondback_many_unused_functions.snek",
+        input: "42",
+        expected: "84",
+    },
+    {
+        name: diamondback_namespaces,
+        file: "diamondback_namespaces.snek",
+        expected: "2"
+    },
+    {
+        name: diamondback_namespaces,
+        file: "diamondback_namespaces.snek",
+        expected: "2"
+    },
 
+    // More complex recursive functions
+    {
+        name: diamondback_recursive_ackermann,
+        file: "diamondback_recursive_ackermann.snek",
+        expected: "61",
+    },
+    {
+        name: diamondback_recursive_factorial,
+        file: "diamondback_recursive_factorial.snek",
+        expected: "1\n1\n2\n6\n24\n120\n720\n5040",
+    },
+    {
+        name: diamondback_recursive_fibonacci,
+        file: "diamondback_recursive_fibonacci.snek",
+        expected: "55",
+    },
 }
 
 runtime_error_tests! {
@@ -352,6 +404,11 @@ runtime_error_tests! {
         name: cobra_number_overflow_fail3,
         file: "cobra_nested_arith3.snek",
         input: "4611686018427387890",
+        expected: "overflow",
+    },
+    {
+        name: diamondback_eventually_overflows,
+        file: "diamondback_eventually_overflows.snek",
         expected: "overflow",
     },
 
@@ -659,6 +716,80 @@ static_error_tests! {
     {
         name: diamondback_fun_duplicate_names_fail,
         file: "diamondback_fun_duplicate_names_fail.snek",
+        expected: "",
+    },
+
+    {
+        name: diamondback_not_fun_fail0,
+        file: "diamondback_not_fun_fail0.snek",
+        expected: "Invalid",
+    },
+    {
+        name: diamondback_not_fun_fail1,
+        file: "diamondback_not_fun_fail1.snek",
+        expected: "Invalid",
+    },
+    {
+        name: diamondback_not_fun_fail2,
+        file: "diamondback_not_fun_fail2.snek",
+        expected: "Invalid",
+    },
+    {
+        name: diamondback_not_fun_fail3,
+        file: "diamondback_not_fun_fail3.snek",
+        expected: "Invalid",
+    },
+    {
+        name: diamondback_not_fun_fail4,
+        file: "diamondback_not_fun_fail4.snek",
+        expected: "Invalid",
+    },
+    {
+        name: diamondback_not_fun_fail5,
+        file: "diamondback_not_fun_fail5.snek",
+        expected: "",
+    },
+
+    {
+        name: diamondback_no_expr_fail,
+        file: "diamondback_no_expr_fail.snek",
+        expected: "",
+    },
+    {
+        name: diamondback_nested_fun_fail,
+        file: "diamondback_nested_fun_fail.snek",
+        expected: "",
+    },
+
+    {
+        name: diamondback_fun_scope_fail0,
+        file: "diamondback_fun_scope_fail0.snek",
+        expected: "",
+    },
+    {
+        name: diamondback_fun_scope_fail1,
+        file: "diamondback_fun_scope_fail1.snek",
+        expected: "",
+    },
+    {
+        name: diamondback_fun_scope_fail2,
+        file: "diamondback_fun_scope_fail2.snek",
+        expected: "",
+    },
+    {
+        name: diamondback_fun_scope_fail3,
+        file: "diamondback_fun_scope_fail3.snek",
+        expected: "",
+    },
+
+    {
+        name: diamondback_function_is_keyword_fail,
+        file: "diamondback_function_is_keyword_fail.snek",
+        expected: "",
+    },
+    {
+        name: diamondback_function_arg_is_keyword_fail,
+        file: "diamondback_function_arg_is_keyword_fail.snek",
         expected: "",
     },
 }

@@ -17,6 +17,9 @@ cp -r "$SOURCE/tests" tests
 
 # Get a clean build in case they uploaded target/
 cargo clean
+if [ -f build.rs ]; then
+    rm build.rs
+fi
 cargo build
 
 # Run tests

@@ -73,9 +73,12 @@ fn run_runtime_error_test(_name: &str, file: &Path, _expected: &str, input: Opti
     assert!(err.contains("Type") || err.contains("Overflow"));
 }
 
-fn run_static_error_test(_name: &str, file: &Path, _expected: &str) {
+fn run_static_error_test(_name: &str, file: &Path, expected: &str) {
     let err = run_interpreter(file, None).unwrap_err();
     assert!(err.contains("Syntax") || err.contains("BadProgram"));
+    if expected == "Invalid" {
+        assert!(err.contains("Syntax"));
+    }
 }
 
 fn run_interpreter(snek_file: &Path, input: Option<&str>) -> Result<String, String> {

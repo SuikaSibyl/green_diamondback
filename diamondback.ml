@@ -95,7 +95,7 @@ module AST = struct
           let bind = function
             | List [Symbol s; x] when not (List.mem s kws)-> s, exp x
             | _ -> raise Syntax in
-          Let(List.map bind binds, exp body)
+          if binds = [] then raise Syntax; Let(List.map bind binds, exp body)
       | List(Symbol "let" :: _) -> raise Syntax
       | List[Symbol "set!"; Symbol var; body] ->
           if List.mem var kws then raise Syntax else Set(var, exp body)

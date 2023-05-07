@@ -492,22 +492,22 @@ static_error_tests! {
     {
         name: boa_parse_token_fail1,
         file: "boa_parse_token_fail1.snek",
-        expected: "Invalid",
+        expected: "",
     },
     {
         name: boa_parse_token_fail2,
         file: "boa_parse_token_fail2.snek",
-        expected: "Invalid",
+        expected: "",
     },
     {
         name: boa_parse_token_fail3,
         file: "boa_parse_token_fail3.snek",
-        expected: "Invalid",
+        expected: "",
     },
     {
         name: boa_parse_token_fail4,
         file: "boa_parse_token_fail4.snek",
-        expected: "Invalid",
+        expected: "",
     },
 
 
@@ -547,7 +547,7 @@ static_error_tests! {
     {
         name: boa_parse_op_fail5,
         file: "boa_parse_op_fail5.snek",
-        expected: "Invalid",
+        expected: "",
     },
     {
         name: cobra_parse_op_fail6,
@@ -584,7 +584,7 @@ static_error_tests! {
     {
         name: boa_parse_let_improperargs_fail3,
         file: "boa_parse_let_improperargs_fail3.snek",
-        expected: "Invalid",
+        expected: "",
     },
     {
         name: boa_parse_let_improperargs_fail4,

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 make clean
-zip -r auto-grader.zip -j auto-grader-scripts/setup.sh auto-grader-scripts/run_autograder auto-grader-scripts/run_tests.py
+zip -r auto-grader.zip -j auto-grader-scripts/setup.sh auto-grader-scripts/run_autograder auto-grader-scripts/run_tests.py auto-grader-scripts/results.json
 zip -r auto-grader.zip tests -x ".*"

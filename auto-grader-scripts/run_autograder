@@ -6,6 +6,9 @@ RESULTS=/autograder/results
 
 set -e
 
+# Copy default results.json with error message in case anything fails before generating one
+cp "$SOURCE/results.json" "$RESULTS/results.json"
+
 source "$HOME/.cargo/env"
 
 # Set submission as working directory

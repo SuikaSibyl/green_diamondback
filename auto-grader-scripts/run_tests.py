@@ -4,12 +4,22 @@ import json
 from pathlib import Path
 import argparse
 
+# Timeout in seconds
+TIMEOUT = 300
+
 
 def run_tests():
     # Only run integration tests
-    result = subprocess.run(['cargo', 'test', '--test', 'all_tests'],
-                            stdout=subprocess.PIPE)
-    stdout = result.stdout.decode()
+    timedout = False
+    try:
+        result = subprocess.run(['cargo', 'test', '--test', 'all_tests'],
+                                timeout=TIMEOUT,
+                                stdout=subprocess.PIPE)
+        stdout = result.stdout.decode()
+    except subprocess.TimeoutExpired as exc:
+        stdout = exc.stdout.decode()
+        timedout = True
+        pass
     print(stdout)
 
     pattern = re.compile(r'test (\w+) ... (ok|FAILED|ignored)')
@@ -22,10 +32,10 @@ def run_tests():
                 'pass': match.group(2) == 'ok',
                 'output': line.rstrip()
             })
-    return results
+    return (timedout, results)
 
 
-def gradescope_format(results):
+def gradescope_format(timedout, results):
     tests = []
     for test in results:
         tests.append({
@@ -34,11 +44,11 @@ def gradescope_format(results):
             'name': test['name'],
             'output': test['output']
         })
-    return {
-        'output': 'The autograded score is not an official grade',
-        'stdout_visibility': 'visible',
-        'tests': tests
-    }
+    if timedout:
+        output = f'Your submission timed out after {TIMEOUT} seconds. The results may be incomplete.'
+    else:
+        output = 'The autograded score is not an official grade'
+    return {'output': output, 'stdout_visibility': 'visible', 'tests': tests}
 
 
 if __name__ == '__main__':
@@ -46,8 +56,8 @@ if __name__ == '__main__':
     parser.add_argument("results_path", type=Path)
     args = parser.parse_args()
 
-    results = run_tests()
-    gradescope = gradescope_format(results)
+    (timedout, results) = run_tests()
+    gradescope = gradescope_format(timedout, results)
     args.results_path.parent.mkdir(parents=True, exist_ok=True)
     with open(args.results_path, 'w') as f:
         f.write(json.dumps(gradescope))

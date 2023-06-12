@@ -1,0 +1,8 @@
+(fun (sumrec num sofar)
+    (if (= num 0)
+        sofar
+        (sumrec (+ num -1) (+ sofar 1))
+    )
+)
+
+(sumrec 1000000 0)

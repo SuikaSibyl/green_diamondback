@@ -1,0 +1,12 @@
+(fun (sumrec1 num sofar)
+    (if (= num 0)
+        sofar
+        (fn2 1 2 3)
+    )
+)
+
+(fun (fn2 a b c)
+    (+ a (+ b c))
+)
+
+(sumrec1 1 0)

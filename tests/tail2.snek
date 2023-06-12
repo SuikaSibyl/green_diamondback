@@ -1,0 +1,15 @@
+(fun (sumrec1 num sofar)
+    (if (= num 0)
+        sofar
+        (sumrec2 (+ num -1) (+ sofar 1))
+    )
+)
+
+(fun (sumrec2 num sofar)
+    (if (= num 0)
+        sofar
+        (sumrec1 (+ num -1) (+ sofar 2))
+    )
+)
+
+(sumrec1 1000000 0)
